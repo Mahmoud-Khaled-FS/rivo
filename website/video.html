@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+    integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    #form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="form">
+    <input type="text" name="" id="id" placeholder="video id">
+    <button>Play</button>
+  </form>
+  <video id="videoa" controls type="video/mp4"
+    src="http://localhost:8080/api/stream/780fb719-6c6c-4e58-b3d3-9d6ba3782345" height="400px" width="600px"></video>
+  <video id="video"></video>
+  <!-- <script>
+    fetch('http://localhost:8080/api/rivo/stream/f3aeae5c-906c-4a71-ab43-7815531a7abb', {
+      headers: {
+        'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJhODI0MTMwLTk5OTMtNDY1Yy04NGFmLTQ1ODdkMTQxNTFmZiIsImlhdCI6MTY2Mzc3NjE0N30.8caaRNBVYHKdThXhGmHzdvDNhgaBpbpaFX-N8_VTIlM'
+        , 'Range': 'bytes=374445-'
+      }
+    })
+      .then((response) => response.body)
+      .then((rb) => {
+        const reader = rb.getReader();
+
+        return new ReadableStream({
+          start(controller) {
+            // The following function handles each data chunk
+            function push() {
+              // "done" is a Boolean and value a "Uint8Array"
+              reader.read().then(({ done, value }) => {
+                if (done) {
+                  console.log('done', done);
+                  controller.close();
+                  return;
+                }
+                controller.enqueue(value);
+                console.log(done, value);
+                push();
+              });
+            }
+            push();
+          },
+        });
+      })
+      .then((stream) => {
+        // const blob = new Blob([result], { type: 'video/mp4' });
+        new Response(stream, { headers: { 'Content-Type': 'text/html' } }).text()
+      }
+      )
+      .then((result) => {
+        console.log(ebdane)
+      });
+  </script> -->
+
+</body>
+
+</html>

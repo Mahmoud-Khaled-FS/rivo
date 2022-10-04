@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    #form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <form id="form" enctype="multipart/form-data">
+    <input type="text" placeholder="Caption" name="caption" id="caption">
+    <input type="location" name="location" id="location" value="cairo">
+    <input type="file" name="video" accept="images/*" id="video">
+    <button type="submit">Upload</button>
+  </form>
+  <script>
+    document.getElementById('form').onsubmit = async (e) => {
+      e.preventDefault()
+      const data = new FormData(form)
+      const res = await fetch('http://localhost:8080/api/rivo/upload', {
+        method: 'POST',
+        body: data,
+        headers: {
+          'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImJhODI0MTMwLTk5OTMtNDY1Yy04NGFmLTQ1ODdkMTQxNTFmZiIsImlhdCI6MTY2Mzc3NjE0N30.8caaRNBVYHKdThXhGmHzdvDNhgaBpbpaFX-N8_VTIlM',
+        }
+      })
+      const dataRes = await res.json()
+      console.log(dataRes)
+    }
+  </script>
+</body>
+
+</html>

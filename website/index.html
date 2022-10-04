@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button id="$google_provider">Authenticate with Google</button>
+  <button id="$facebook_provider">Authenticate with facebook</button>
+  <button id="$twitter_provider">Authenticate with twitter</button>
+  <script>
+
+    $google_provider.onclick = () => {
+      window.open("http://localhost:8080/api/auth/google",
+        '_blank', `left=${window.innerWidth / 2.7},top=150,width=500,height=600`)
+    }
+    $facebook_provider.onclick = () => {
+      window.open("http://localhost:8080/api/auth/facebook",
+        '_blank', `left=${window.innerWidth / 2.7},top=150,width=500,height=600`)
+    }
+    $twitter_provider.onclick = () => {
+      window.open("http://localhost:8080/api/auth/twitter",
+        '_blank', `left=${window.innerWidth / 2.7},top=150,width=500,height=600`)
+    }
+  </script>
+</body>
+
+</html>
