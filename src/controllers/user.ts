@@ -54,7 +54,7 @@ export const getUserHandler: RequestHandler = async (req, res, next) => {
       response.data.followers_count = followers.length;
     }
     if (user.following) {
-      const following = user.followers.map((f) => f.userId);
+      const following = user.following.map((f) => f.userId);
       response.data.following = following;
       response.data.followeing_count = following.length;
     }

@@ -15,7 +15,12 @@ routes.post(
   controllers.signupHandler,
 );
 
-routes.post('/login', body('email').isEmail(), body('phone').isMobilePhone('any'), controllers.loginHandler);
+routes.post(
+  '/login',
+  body('email').isEmail(),
+  body('password').isLength({ min: 8, max: 40 }),
+  controllers.loginHandler,
+);
 
 routes.get('/google', passport.authenticate('google', { scope: ['profile', 'email'], session: false }));
 routes.get('/facebook', passport.authenticate('facebook'));

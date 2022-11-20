@@ -12,6 +12,7 @@ export const loginHandler: RequestHandler = async (req: RequestWithBody<LoginBod
     const error = validationResult(req);
     if (!error.isEmpty()) {
       const err: ErrorRequest = new Error('bad request!');
+      console.log(error);
       err.code = 400;
       return next(err);
     }
@@ -39,7 +40,7 @@ export const loginHandler: RequestHandler = async (req: RequestWithBody<LoginBod
       updatedAt: userExist.profile!.updateAt,
     };
     res.status(202).json({ status: 'ok', code: 202, data: response });
-  } catch {
+  } catch (error) {
     const err: ErrorRequest = new Error('Internal server Error!');
     err.code = 500;
     return next(err);
